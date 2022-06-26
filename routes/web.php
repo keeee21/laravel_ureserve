@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LivewireController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +25,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::controller(LivewireController::class)
+->prefix('livewire-test')->name('livewire-test.')->group(function(){
+    Route::get('index', 'index')->name('index');
+    Route::get('register', 'register')->name('register');
 });
